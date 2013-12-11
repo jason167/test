@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="internal/test"/>
+	<classpathentry kind="src" path="internal/framework"/>
+	<classpathentry kind="src" path="internal/codec"/>
+	<classpathentry kind="src" path="internal/bootstrap"/>
+	<classpathentry kind="src" path="internal/logger"/>
+	<classpathentry kind="src" path="internal/datasource"/>
+	<classpathentry kind="src" path="internal/util"/>
+	<classpathentry kind="src" path="internal/cache"/>
+	<classpathentry kind="src" path="internal/temp"/>
+	<classpathentry kind="src" path="resource"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="lib/axis-ant.jar"/>
+	<classpathentry kind="lib" path="lib/axis.jar"/>
+	<classpathentry kind="lib" path="lib/c3p0-0.9.1.2.jar" sourcepath="external/c3p0"/>
+	<classpathentry kind="lib" path="lib/commons-discovery-0.2.jar"/>
+	<classpathentry kind="lib" path="lib/commons-logging-1.0.4.jar"/>
+	<classpathentry kind="lib" path="lib/jaxrpc.jar"/>
+	<classpathentry kind="lib" path="lib/logback-classic-1.0.6.jar"/>
+	<classpathentry kind="lib" path="lib/logback-core-1.0.6.jar" sourcepath="external/logback/logback-core"/>
+	<classpathentry kind="lib" path="lib/mail.jar"/>
+	<classpathentry kind="lib" path="lib/msbase.jar"/>
+	<classpathentry kind="lib" path="lib/mssqlserver.jar"/>
+	<classpathentry kind="lib" path="lib/quartz-all-1.8.6.jar"/>
+	<classpathentry kind="lib" path="lib/saaj.jar"/>
+	<classpathentry kind="lib" path="lib/slf4j-api-1.6.6.jar"/>
+	<classpathentry kind="lib" path="lib/sqljdbc4.jar"/>
+	<classpathentry kind="lib" path="lib/wsdl4j-1.5.1.jar"/>
+	<classpathentry kind="lib" path="lib/xmlsec-1.4.0.jar"/>
+	<classpathentry kind="lib" path="lib/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="lib/junit.jar"/>
+	<classpathentry kind="lib" path="lib/org.hamcrest.core_1.1.0.v20090501071000.jar"/>
+	<classpathentry kind="lib" path="lib/commons-beanutils-1.8.3.jar"/>
+	<classpathentry kind="lib" path="lib/mysql-connector-java-5.1.24-bin.jar"/>
+	<classpathentry kind="lib" path="lib/ojdbc14.jar"/>
+	<classpathentry kind="lib" path="lib/protobuf-java-2.5.0.jar" sourcepath="external/protobuf/2.5.0"/>
+	<classpathentry kind="lib" path="lib/netty-3.7.0.Final.jar" sourcepath="external/netty/3.7.0"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

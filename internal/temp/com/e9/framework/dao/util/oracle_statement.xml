@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<statements>
+	<sql name="findall">select * from dual</sql>
+</statements>

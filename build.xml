@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="E9Framework" basedir="." default="build-all">
+	
+	<!-- 引入ant-contrib以ant标记 
+	<typedef resource="net/sf/antcontrib/antlib.xml"/>-->
+	
+	<property file="build.properties" />
+	<!-- 定义常量 -->
+	<property name="app-encoding" value="UTF-8"/>
+	<property name="app-out" value="app"/>
+	<property name="app-bin" value="bin"/>
+	<property name="app-lib" value="${basedir}/lib"/>
+	
+	<property name="app-classes" value="${app-out}/classes"/>
+	<property name="app-library-dir" value="${app-out}/library"/>
+	
+	
+	<!-- zip文件存储路径和名称-->
+	<property name="app-zip-name" value="e9-library-all.zip"/>
+	<property name="app-3rd-Library-zip-name" value="3rd-library-all.zip"/>
+		
+	<property name="app-zip-path" value="${app-out}/${app-zip-name}"/>
+	<property name="app-3rd-Library-path" value="${app-out}/${app-3rd-Library-zip-name}"/>
+	
+	
+	<!--编译后的jar包存储路径和名称-->
+	<property name="jar-framework-path" value="${app-library-dir}/${R.framework.name}"/>
+	<property name="jar-logger-path" value="${app-library-dir}/${R.logger.name}"/>
+	<property name="jar-datasource-path" value="${app-library-dir}/${R.datasource.name}"/>
+	<property name="jar-util-path" value="${app-library-dir}/${R.util.name}"/>
+	<property name="jar-cache-path" value="${app-library-dir}/${R.cache.name}"/>
+	<property name="jar-codec-path" value="${app-library-dir}/${R.codec.name}"/>
+	
+	
+	<!-- 源文件所在目录定义 -->
+	<property name="source-framework-dir" value="internal/framework"/>
+	<property name="source-logger-dir" value="internal/logger"/>
+	<property name="source-datasource-dir" value="internal/datasource"/>
+	<property name="source-util-dir" value="internal/util"/>
+	<property name="source-cache-dir" value="internal/cache"/>
+	<property name="source-codec-dir" value="internal/codec"/>
+	
+	<!-- 编译后的class文件所在目录定义 -->
+	<property name="class-framework-dir" value="${app-classes}/framework"/>
+	<property name="class-logger-dir" value="${app-classes}/logger"/>
+	<property name="class-datasource-dir" value="${app-classes}/datasource"/>
+	<property name="class-util-dir" value="${app-classes}/util"/>
+	<property name="class-cache-dir" value="${app-classes}/cache"/>
+	<property name="class-codec-dir" value="${app-classes}/codec"/>
+	
+
+	<!-- 清空build目录 -->
+	<target name="clear-all" depends="clear-class,clear-jar">
+		<delete>
+			<fileset dir="${app-out}">
+			    <include name="**/*"/>
+			    <exclude name="${app-out}"/>
+			</fileset>
+		</delete>
+	</target>
+	<target name="clear-class">
+		<delete dir="${app-classes}"></delete>
+	</target>
+	<target name="clear-jar">
+		<delete dir="${app-library-dir}"></delete>
+	</target>
+	
+	<!-- 编译cache源码 -->
+	<target name="build_cache">
+		<delete dir="${class-cache-dir}"></delete>
+		<mkdir dir="${class-cache-dir}"/>
+		<path id="classpath">
+			<pathelement path="${app-bin}"/>
+			<fileset dir="${app-lib}">
+			    <include name="*.jar"/>
+			</fileset>
+
+		</path>
+		
+		<javac srcdir="${source-cache-dir}"
+	         destdir="${class-cache-dir}"
+			 classpathref="classpath"
+	         debug="on"
+			includeantruntime="on"
+			encoding="${app-encoding}"
+		/> 
+		
+		<mkdir dir="${app-library-dir}"/>
+		<delete>
+			<fileset dir="${app-library-dir}">
+			    <include name="${R.cache.name}"/>
+			</fileset>
+		</delete>
+		
+		<jar destfile="${jar-cache-path}" basedir="${class-cache-dir}">
+			<include name="**"/>
+		</jar>
+		<echo>${R.cache.name} 构建完成,请查看输出文件:${jar-cache-path}</echo>
+	</target>
+
+	<!-- 编译util源码 -->
+	<target name="build_util">
+		<delete dir="${class-util-dir}"></delete>
+		<mkdir dir="${class-util-dir}"/>
+		<path id="classpath">
+			<pathelement path="${app-bin}"/>
+			<fileset dir="${app-lib}">
+			    <include name="*.jar"/>
+			</fileset>
+
+		</path>
+		
+		<javac srcdir="${source-util-dir}"
+	         destdir="${class-util-dir}"
+			 classpathref="classpath"
+	         debug="on"
+			includeantruntime="on"
+			encoding="${app-encoding}"
+		/> 
+		
+		<mkdir dir="${app-library-dir}"/>
+		<delete>
+			<fileset dir="${app-library-dir}">
+			    <include name="${R.util.name}"/>
+			</fileset>
+		</delete>
+
+		<jar destfile="${jar-util-path}" basedir="${class-util-dir}">
+			<include name="**"/>
+		</jar>
+		<echo>${R.util.name} 构建完成,请查看输出文件:${jar-util-path}</echo>
+	</target>
+	
+	<!-- 编译datasource源码 -->
+	<target name="build_datasource">
+		<delete dir="${class-datasource-dir}"></delete>
+		<mkdir dir="${class-datasource-dir}"/>
+		<path id="classpath">
+			<pathelement path="${app-bin}"/>
+			<fileset dir="${app-lib}">
+			    <include name="*.jar"/>
+			</fileset>
+
+		</path>
+		
+		<javac srcdir="${source-datasource-dir}"
+	         destdir="${class-datasource-dir}"
+			 classpathref="classpath"
+	         debug="on"
+			includeantruntime="on"
+			encoding="${app-encoding}"
+		/> 
+		
+		<mkdir dir="${app-library-dir}"/>
+		<delete>
+			<fileset dir="${app-library-dir}">
+			    <include name="${R.datasource.name}"/>
+			</fileset>
+		</delete>
+
+		<jar destfile="${jar-datasource-path}" basedir="${class-datasource-dir}">
+			<include name="**"/>
+		</jar>
+		<echo>${R.datasource.name} 构建完成,请查看输出文件:${jar-datasource-path}</echo>
+	</target>
+
+	<!-- 编译logger源码 -->
+	<target name="build_logger">
+		<delete dir="${class-logger-dir}"></delete>
+		<mkdir dir="${class-logger-dir}"/>
+		<path id="classpath">
+			<pathelement path="${app-bin}"/>
+			<fileset dir="${app-lib}">
+			    <include name="*.jar"/>
+			</fileset>
+
+		</path>
+		
+		<javac srcdir="${source-logger-dir}"
+	         destdir="${class-logger-dir}"
+			 classpathref="classpath"
+	         debug="on"
+			includeantruntime="on"
+			encoding="${app-encoding}"
+		/> 
+		
+		<mkdir dir="${app-library-dir}"/>
+		<delete>
+			<fileset dir="${app-library-dir}">
+			    <include name="${R.logger.name}"/>
+			</fileset>
+		</delete>
+
+		<jar destfile="${jar-logger-path}" basedir="${class-logger-dir}">
+			<include name="**"/>
+		</jar>
+		<echo>${R.logger.name} 构建完成,请查看输出文件:${jar-logger-path}</echo>
+	</target>
+	
+	<!-- 编译framwork源码 -->
+	<target name="build_framework">
+		<delete dir="${class-framework-dir}"></delete>
+		<mkdir dir="${class-framework-dir}"/>
+		<path id="classpath">
+			<pathelement path="${app-bin}"/>
+			<fileset dir="${app-lib}">
+			    <include name="*.jar"/>
+			</fileset>
+
+		</path>
+		
+		<javac srcdir="${source-framework-dir}"
+	         destdir="${class-framework-dir}"
+			 classpathref="classpath"
+	         debug="on"
+			includeantruntime="on"
+			encoding="${app-encoding}"
+		/> 
+		
+		<mkdir dir="${app-library-dir}"/>
+		<delete>
+			<fileset dir="${app-library-dir}">
+			    <include name="${R.framework.name}"/>
+			</fileset>
+		</delete>
+		
+		<jar destfile="${jar-framework-path}" basedir="${class-framework-dir}">
+			<include name="**"/>
+		</jar>
+		<echo>${R.framework.name} 构建完成,请查看输出文件:${jar-framework-path}</echo>
+	</target>
+	
+	<!-- 编译codec源码 -->
+	<target name="build_codec">
+		<delete dir="${class-codec-dir}"></delete>
+		<mkdir dir="${class-codec-dir}"/>
+		<path id="classpath">
+			<pathelement path="${app-bin}"/>
+			<fileset dir="${app-lib}">
+			    <include name="*.jar"/>
+			</fileset>
+
+		</path>
+		
+		<javac srcdir="${source-codec-dir}"
+	         destdir="${class-codec-dir}"
+			 classpathref="classpath"
+	         debug="on"
+			includeantruntime="on"
+			encoding="${app-encoding}"
+		/> 
+		
+		<mkdir dir="${app-library-dir}"/>
+		<delete>
+			<fileset dir="${app-library-dir}">
+			    <include name="${R.codec.name}"/>
+			</fileset>
+		</delete>
+		
+		<jar destfile="${jar-codec-path}" basedir="${class-codec-dir}">
+			<include name="**"/>
+		</jar>
+		<echo>${R.codec.name} 构建完成,请查看输出文件:${jar-codec-path}</echo>
+	</target>
+	
+	<target name="build-all" depends="clear-all,build_cache,build_util,build_datasource,build_logger,build_framework,build_codec"/>
+	
+	<!-- 将所有jar包压缩为zip文件，便于发布和传阅 -->
+	<target name="to-zip">
+		<delete>
+			<fileset dir="${app-out}">
+			    <include name="${app-zip-name}"/>
+				<include name="${app-3rd-Library-zip-name}"/>
+			</fileset>
+		</delete>
+
+		<zip destfile="${app-zip-path}">
+			<fileset dir="${app-library-dir}">
+				<include name="**/*.jar"/>
+			</fileset>
+		</zip>
+		<echo>构建完成,请查看输出文件:${app-zip-path}</echo>
+		
+		<zip destfile="${app-3rd-Library-path}">
+			<fileset dir="${app-lib}">
+				<include name="**/*.jar"/>
+			</fileset>
+		</zip>
+		<echo>构建完成,请查看输出文件:${app-3rd-Library-path}</echo>
+	</target>
+</project>
