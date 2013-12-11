@@ -35,6 +35,6 @@
 	<classpathentry kind="lib" path="lib/mysql-connector-java-5.1.24-bin.jar"/>
 	<classpathentry kind="lib" path="lib/ojdbc14.jar"/>
 	<classpathentry kind="lib" path="lib/protobuf-java-2.5.0.jar" sourcepath="external/protobuf/2.5.0"/>
-	<classpathentry kind="lib" path="lib/netty-3.7.0.Final.jar" sourcepath="external/netty/3.7.0"/>
+	<classpathentry kind="lib" path="lib/netty-3.8.0.Final.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
