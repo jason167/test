@@ -48,7 +48,7 @@ public abstract class AbstractChannelHandler extends IdleStateAwareChannelUpstre
 		// TODO Auto-generated constructor stub
 		this.channelGroup = new DefaultChannelGroup("DefaultHandler-ChannelGroup");
 		
-		MT_Executor = Executors.newFixedThreadPool((nThreads <= 0 ? 100 : nThreads), new NamingThreadFactory(threadName + "-MT-ThreadPoolExecutor"));
+		MT_Executor = Executors.newFixedThreadPool((nThreads <= 0 ? Runtime.getRuntime().availableProcessors() * 2 : nThreads), new NamingThreadFactory(threadName + "-MT-ThreadPoolExecutor"));
 		aliveTestExecutor = Executors.newFixedThreadPool(2, new NamingThreadFactory(threadName + "-AliveTest-ThreadPoolExecutor"));
 		MO_Executor = Executors.newFixedThreadPool(2, new NamingThreadFactory(threadName + "-MO-ThreadPoolExecutor"));
 		loginExecutor = Executors.newFixedThreadPool(2, new NamingThreadFactory(threadName + "-Login-ThreadPoolExecutor"));

@@ -22,10 +22,14 @@ public class DaoTest {
 		// TODO Auto-generated method stub
 
 		Properties pro = new Properties();
-		pro.setProperty("driverClass", "oracle.jdbc.OracleDriver");
-		pro.setProperty("jdbcUrl", "jdbc:oracle:thin:@192.168.0.84:1521:devdb");
-		pro.setProperty("uid", "osp");
-		pro.setProperty("pwd", "osp");
+		pro.setProperty("driverClass", "com.mysql.jdbc.Driver");
+		pro.setProperty("jdbcUrl", "jdbc:mysql://localhost:8889/sms");
+		pro.setProperty("uid", "root");
+		pro.setProperty("pwd", "root");
+//		pro.setProperty("driverClass", "oracle.jdbc.OracleDriver");
+//		pro.setProperty("jdbcUrl", "jdbc:oracle:thin:@192.168.0.84:1521:devdb");
+//		pro.setProperty("uid", "osp");
+//		pro.setProperty("pwd", "osp");
 		
 		E9DataSource dao = null;
 		try {

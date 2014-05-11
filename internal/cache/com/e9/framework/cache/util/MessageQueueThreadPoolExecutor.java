@@ -437,7 +437,7 @@ public class MessageQueueThreadPoolExecutor{
 							if (counter == tasks.size()) {
 								
 								String stateString = task.getState() == IQueueRunnable.NONE ? "NONE" : "PAUSED";
-								logger.debug("Task state is [{}], Thread [{}] whill sleep two seconds ...  task:{}",
+								logger.debug("Task state is [{}], Thread [{}] will sleep two seconds ...  task:{}",
 										new Object[]{stateString, Thread.currentThread().getName(), task});
 								
 								TimeUnit.SECONDS.sleep(2);
